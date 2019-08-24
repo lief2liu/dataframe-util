@@ -9,8 +9,25 @@ class DateUtil implements Serializable {
         Date.parse("yyyy", year).format("yyyyMMdd")
     }
 
+    static String yearLastDay(String year) {
+        String nextYear = ((year as int) + 1) + ""
+        Calendar cal = Calendar.getInstance()
+        cal.setTime(Date.parse("yyyy", nextYear))
+        cal.set(Calendar.DAY_OF_MONTH, 0)
+        cal.getTime().format("yyyyMMdd")
+    }
+
     static String monthFirstDay(String year) {
         Date.parse("yyyyMM", year).format("yyyyMMdd")
+    }
+
+    static String monthLastDay(String month) {
+
+        Calendar cal = Calendar.getInstance()
+        cal.setTime(Date.parse("yyyyMM", month))
+        cal.add(Calendar.MONTH, 1)
+        cal.set(Calendar.DAY_OF_MONTH, 0)
+        cal.getTime().format("yyyyMMdd")
     }
 
     static String quarterFirstDay(String quarter) {
@@ -34,23 +51,5 @@ class DateUtil implements Serializable {
         cal.set(Calendar.MONTH, month)
         cal.set(Calendar.DAY_OF_MONTH, 0)
         cal.getTime().format("yyyyMMdd")
-    }
-
-    static String yearLastDay(String year) {
-        Calendar cal = Calendar.getInstance()
-        cal.setTime(Date.parse("yyyyMM", year+"12"))
-
-    }
-
-//    static yearhLastDay(String month, String fromFormat, String toFormat) {
-//        Calendar cal = Calendar.getInstance()
-//        cal.setTime(Date.parse(fromFormat, month))
-//        cal.add(Calendar.MONTH,1)
-//        cal.set(Calendar.DAY_OF_MONTH, 0)
-//        cal.getTime().format(toFormat)
-//    }
-
-    public static void main(String[] args) {
-        println yearLastDay("2019")
     }
 }
