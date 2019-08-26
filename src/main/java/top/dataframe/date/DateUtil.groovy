@@ -17,8 +17,8 @@ class DateUtil implements Serializable {
         cal.getTime().format("yyyyMMdd")
     }
 
-    static String monthFirstDay(String year) {
-        Date.parse("yyyyMM", year).format("yyyyMMdd")
+    static String monthFirstDay(String month) {
+        Date.parse("yyyyMM", month).format("yyyyMMdd")
     }
 
     static String monthLastDay(String month) {
