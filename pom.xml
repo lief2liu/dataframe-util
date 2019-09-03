@@ -6,7 +6,7 @@
 
     <groupId>top.dataframe</groupId>
     <artifactId>dataframe-util</artifactId>
-    <version>0.4.5-SNAPSHOT</version>
+    <version>0.4.6-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -119,8 +119,7 @@
         <dependency>
             <groupId>top.dataframe</groupId>
             <artifactId>dataframe-core</artifactId>
-            <version>0.4.5-SNAPSHOT</version>
+            <version>0.4.6-SNAPSHOT</version>
         </dependency>
     </dependencies>
-
 </project>
