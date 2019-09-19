@@ -5,6 +5,10 @@ import groovy.transform.CompileStatic
 
 @CompileStatic
 class DateUtil implements Serializable {
+    static String second2day(int second) {
+        new Date((Long) second * 1000).format("yyyyMMdd")
+    }
+
     static String yearFirstDay(String year) {
         Date.parse("yyyy", year).format("yyyyMMdd")
     }
@@ -51,5 +55,36 @@ class DateUtil implements Serializable {
         cal.set(Calendar.MONTH, month)
         cal.set(Calendar.DAY_OF_MONTH, 0)
         cal.getTime().format("yyyyMMdd")
+    }
+
+    static List<String> parseStartAndEnd(String start, String end, String format, int defaultDays) {
+        if (!(end?.trim())) {
+            end = new Date().format(format) as int
+        }
+        if (!(start?.trim())) {
+            start = (Date.parse(format, end as String) - defaultDays).format(format) as int
+        }
+
+        if (start.length() == 4) {
+            start = DateUtil.yearFirstDay(start)
+        } else if (start.length() == 6) {
+            if (start.indexOf("-") <= 0) {
+                start = DateUtil.monthFirstDay(start)
+            } else {
+                start = DateUtil.quarterFirstDay(start)
+            }
+        }
+
+        if (end.length() == 4) {
+            end = DateUtil.yearLastDay(end)
+        } else if (end.length() == 6) {
+            if (end.indexOf("-") <= 0) {
+                end = DateUtil.monthLastDay(end)
+            } else {
+                end = DateUtil.quarterLastDay(end)
+            }
+        }
+
+        [start, end]
     }
 }
