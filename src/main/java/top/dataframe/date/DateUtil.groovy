@@ -66,22 +66,22 @@ class DateUtil implements Serializable {
         }
 
         if (start.length() == 4) {
-            start = DateUtil.yearFirstDay(start)
+            start = yearFirstDay(start)
         } else if (start.length() == 6) {
             if (start.indexOf("-") <= 0) {
-                start = DateUtil.monthFirstDay(start)
+                start = monthFirstDay(start)
             } else {
-                start = DateUtil.quarterFirstDay(start)
+                start = quarterFirstDay(start)
             }
         }
 
         if (end.length() == 4) {
-            end = DateUtil.yearLastDay(end)
+            end = yearLastDay(end)
         } else if (end.length() == 6) {
             if (end.indexOf("-") <= 0) {
-                end = DateUtil.monthLastDay(end)
+                end = monthLastDay(end)
             } else {
-                end = DateUtil.quarterLastDay(end)
+                end = quarterLastDay(end)
             }
         }
 
