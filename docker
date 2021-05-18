@@ -1,0 +1,11 @@
+docker run -d --name centos00 --privileged=true centos:latest /sbin/init
+
+docker pull centos:latest
+
+yum install -y openssl openssh-server openssh-clients passwd
+
+passwd root
+
+docker commit 345dd2173c43 lief:centos00
+
+docker run -d -p 22:22 --name centos00 --privileged=true lief:centos00 /sbin/init
